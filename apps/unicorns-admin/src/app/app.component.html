@@ -1,8 +1,7 @@
 <nx-monorepo-header></nx-monorepo-header>
-<div class="main" *ngFor="let product of products">
-  <mat-card class="example-card">
+<div class="main" >
+  <mat-card class="example-card" *ngFor="let product of products">
     <img mat-card-image style="height: 200px" src="{{product.image}}" alt="{{product.name}}">
-         alt="Photo of a Shiba Inu">
     <mat-card-content>
       <p>
         The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.

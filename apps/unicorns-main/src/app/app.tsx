@@ -6,7 +6,36 @@ import {IProduct} from "@nx-monorepo/unicorns/util-interfaces";
 
 
 export function App() {
-  const [products, setProducts] = useState<IProduct[]>([]);
+  const [products, setProducts] = useState<IProduct[]>([
+    {
+      "id": 1,
+      "name": "List 1",
+      "image": "https://source.unsplash.com/1600x900/?cat",
+      "description": "This is item #1",
+      "price": 100
+    },
+    {
+      "id": 2,
+      "name": "List 2",
+      "image": "https://source.unsplash.com/1600x900/?dog",
+      "description": "This is item #2",
+      "price": 200
+    },
+    {
+      "id": 3,
+      "name": "List 3",
+      "image": "https://source.unsplash.com/1600x900/?bird",
+      "description": "This is item #3",
+      "price": 300
+    },
+    {
+      "id": 4,
+      "name": "Test",
+      "image": "https://source.unsplash.com/1600x900/?home",
+      "description": "This is item #4",
+      "price": 400
+    }
+  ]);
   const getProducts = async () => {
     const res = await fetch('http://localhost:3001/products');
     const data: IProduct[] = await res.json();
@@ -16,9 +45,9 @@ export function App() {
     setProducts(data);
   }
 
-  useEffect(() => {
-    getProducts();
-  }, []);
+  // useEffect(() => {
+  //   getProducts();
+  // }, []);
 
   return (
     <>
