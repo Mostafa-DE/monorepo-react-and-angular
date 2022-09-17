@@ -1,0 +1,99 @@
+{
+  "projectType": "application",
+  "sourceRoot": "apps/unicorns-admin/src",
+  "prefix": "nx-monorepo",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/unicorns-admin",
+        "index": "apps/unicorns-admin/src/index.html",
+        "main": "apps/unicorns-admin/src/main.ts",
+        "polyfills": "apps/unicorns-admin/src/polyfills.ts",
+        "tsConfig": "apps/unicorns-admin/tsconfig.app.json",
+        "assets": [
+          "apps/unicorns-admin/src/favicon.ico",
+          "apps/unicorns-admin/src/assets"
+        ],
+        "styles": [
+          "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/unicorns-admin/src/styles.css"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/unicorns-admin/src/environments/environment.ts",
+              "with": "apps/unicorns-admin/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "unicorns-admin:build:production"
+        },
+        "development": {
+          "browserTarget": "unicorns-admin:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "unicorns-admin:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/unicorns-admin/**/*.ts",
+          "apps/unicorns-admin/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/apps/unicorns-admin"
+      ],
+      "options": {
+        "jestConfig": "apps/unicorns-admin/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

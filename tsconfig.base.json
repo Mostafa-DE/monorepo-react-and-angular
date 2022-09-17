@@ -14,7 +14,17 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-monorepo/unicorns/ui-shared-angular": [
+        "libs/unicorns/ui-shared-angular/src/index.ts"
+      ],
+      "@nx-monorepo/unicorns/ui-shared-react": [
+        "libs/unicorns/ui-shared-react/src/index.ts"
+      ],
+      "@nx-monorepo/unicorns/util-interfaces": [
+        "libs/unicorns/util-interfaces/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

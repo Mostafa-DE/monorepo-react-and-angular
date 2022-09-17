@@ -1,0 +1,93 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/unicorns-main/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/unicorns-main",
+        "index": "apps/unicorns-main/src/index.html",
+        "baseHref": "/",
+        "main": "apps/unicorns-main/src/main.tsx",
+        "polyfills": "apps/unicorns-main/src/polyfills.ts",
+        "tsConfig": "apps/unicorns-main/tsconfig.app.json",
+        "assets": [
+          "apps/unicorns-main/src/favicon.ico",
+          "apps/unicorns-main/src/assets"
+        ],
+        "styles": [
+          "apps/unicorns-main/src/styles.css"
+        ],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/unicorns-main/src/environments/environment.ts",
+              "with": "apps/unicorns-main/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "unicorns-main:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "unicorns-main:build:development"
+        },
+        "production": {
+          "buildTarget": "unicorns-main:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/unicorns-main/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/apps/unicorns-main"
+      ],
+      "options": {
+        "jestConfig": "apps/unicorns-main/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

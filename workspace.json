@@ -1,5 +1,13 @@
 {
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
-  "projects": {}
+  "projects": {
+    "unicorns-admin": "apps/unicorns-admin",
+    "unicorns-admin-e2e": "apps/unicorns-admin-e2e",
+    "unicorns-main": "apps/unicorns-main",
+    "unicorns-main-e2e": "apps/unicorns-main-e2e",
+    "unicorns-ui-shared-angular": "libs/unicorns/ui-shared-angular",
+    "unicorns-ui-shared-react": "libs/unicorns/ui-shared-react",
+    "unicorns-util-interfaces": "libs/unicorns/util-interfaces"
+  }
 }
